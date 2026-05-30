@@ -1,3 +1,9 @@
+"""CSV output writer utilities for pipeline results.
+
+This module contains `OutputWriter` which serializes pipeline records
+to a CSV file used by reviewers to print vouchers.
+"""
+
 import csv
 from pathlib import Path
 

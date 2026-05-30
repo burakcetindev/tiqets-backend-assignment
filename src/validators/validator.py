@@ -1,3 +1,10 @@
+"""Validation logic to enforce assignment rules on orders and barcodes.
+
+This module provides `Validator` which filters malformed rows, rejects
+barcodes referencing unknown orders, removes duplicate barcodes, and drops
+orders without associated barcodes.
+"""
+
 import logging
 from collections import Counter
 
@@ -28,9 +35,6 @@ class Validator:
 
         Returns:
             tuple[list[Order], list[Barcode]]: Clean orders and barcodes.
-
-        Raises:
-            None
         """
         clean_orders = self._filter_invalid_orders(orders)
         clean_barcodes = self._filter_invalid_barcodes(barcodes, {o.order_id for o in clean_orders})
@@ -46,9 +50,6 @@ class Validator:
 
         Returns:
             list[Order]: Valid orders.
-
-        Raises:
-            None
         """
         cleaned: list[Order] = []
         for order in orders:
@@ -67,9 +68,6 @@ class Validator:
 
         Returns:
             list[Barcode]: Valid barcodes.
-
-        Raises:
-            None
         """
         cleaned: list[Barcode] = []
         for barcode in barcodes:
@@ -90,9 +88,6 @@ class Validator:
 
         Returns:
             list[Barcode]: Barcodes without duplicates.
-
-        Raises:
-            None
         """
         counts = Counter(barcode.barcode for barcode in barcodes)
         duplicates = {value for value, count in counts.items() if count > 1}
@@ -116,9 +111,6 @@ class Validator:
 
         Returns:
             list[Order]: Orders with barcodes.
-
-        Raises:
-            None
         """
         order_ids_with_barcodes = {barcode.order_id for barcode in barcodes if barcode.order_id}
         cleaned: list[Order] = []

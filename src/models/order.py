@@ -1,3 +1,8 @@
+"""Order domain model used by the pipeline.
+
+Contains the immutable `Order` dataclass with identifiers parsed from CSV.
+"""
+
 from dataclasses import dataclass
 
 

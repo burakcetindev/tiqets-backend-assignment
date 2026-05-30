@@ -1,3 +1,5 @@
+"""Reporting helpers for pipeline summaries printed to stdout."""
+
 class Reporter:
     """Prints pipeline summaries to stdout."""
 
@@ -8,9 +10,6 @@ class Reporter:
             top_customers (list[tuple[str, int]]): Customer counts.
 
         Returns:
-            None
-
-        Raises:
             None
         """
         for customer_id, ticket_count in top_customers:
@@ -23,9 +22,6 @@ class Reporter:
             count (int): Unused barcode count.
 
         Returns:
-            None
-
-        Raises:
             None
         """
         print(f"Unused barcodes: {count}")

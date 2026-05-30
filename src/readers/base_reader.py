@@ -1,3 +1,9 @@
+"""Base reader utilities for CSV parsing and normalization.
+
+`BaseReader` provides a reusable `_read_rows` helper that validates headers
+and normalizes CSV rows into dictionaries for downstream models.
+"""
+
 import csv
 from abc import ABC, abstractmethod
 from pathlib import Path

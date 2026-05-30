@@ -1,3 +1,9 @@
+"""Barcodes CSV reader.
+
+Parses `barcode` and optional `order_id` columns into `Barcode` instances.
+Empty `order_id` values are normalized to `None`.
+"""
+
 from typing import Optional
 
 from src.models.barcode import Barcode
@@ -32,9 +38,6 @@ class BarcodeReader(BaseReader):
 
         Returns:
             Optional[str]: Normalized order id or None.
-
-        Raises:
-            None
         """
         value = raw_value.strip()
         return value if value else None

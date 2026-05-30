@@ -1,3 +1,8 @@
+"""Orders CSV reader.
+
+Parses `order_id` and `customer_id` columns into `Order` instances.
+"""
+
 from src.models.order import Order
 
 from .base_reader import BaseReader

@@ -1,3 +1,9 @@
+"""Processor utilities for joining orders and barcodes and producing summaries.
+
+Provides `Processor` which groups barcodes per order and computes top customers
+and unused barcode counts used by the reporter.
+"""
+
 from collections import Counter
 
 from src.models.barcode import Barcode
@@ -16,9 +22,6 @@ class Processor:
 
         Returns:
             list[dict[str, object]]: Output records.
-
-        Raises:
-            None
         """
         barcode_map = self._group_barcodes(barcodes)
         records: list[dict[str, object]] = []
@@ -41,9 +44,6 @@ class Processor:
 
         Returns:
             list[tuple[str, int]]: Sorted (customer_id, count).
-
-        Raises:
-            None
         """
         counts: Counter[str] = Counter()
         for record in records:
@@ -61,9 +61,6 @@ class Processor:
 
         Returns:
             int: Count of unused barcodes.
-
-        Raises:
-            None
         """
         return sum(1 for barcode in barcodes if barcode.order_id is None)
 
@@ -75,9 +72,6 @@ class Processor:
 
         Returns:
             dict[str, list[str]]: Barcodes grouped per order.
-
-        Raises:
-            None
         """
         grouped: dict[str, list[str]] = {}
         for barcode in barcodes:

@@ -1,3 +1,8 @@
+"""Barcode domain model used by the pipeline.
+
+Defines `Barcode` with an optional `order_id` when sold.
+"""
+
 from dataclasses import dataclass
 from typing import Optional
 

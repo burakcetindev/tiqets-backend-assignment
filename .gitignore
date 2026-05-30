@@ -1,0 +1,9 @@
+.ai-agent/
+.DS_Store
+.env
+CHANGELOG_PENDING.md
+__pycache__/
+.pytest_cache/
+output/
+.venv/
+*.pyc
